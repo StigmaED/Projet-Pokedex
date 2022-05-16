@@ -9,9 +9,3 @@ input {
   margin: 2rem auto;
 }
 
-.container {
-  display: flex;
-  opacity: 0.9;
-  background-color: whitesmoke;
-  justify-content: center;
-}
