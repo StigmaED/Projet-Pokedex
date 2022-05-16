@@ -59,11 +59,11 @@ const App = () =>
             </div>
             <div className="divTableRow">
                 <div className="divTableCell">Taille</div>
-                <div className="divTableCell">{" "}{Math.round(data.height)} mettres </div>
+                <div className="divTableCell">{" "}{Math.round(data.height * 10)} centimetres </div>
             </div>
             <div className="divTableRow">
                 <div className="divTableCell">Poids</div>
-                <div className="divTableCell">{" "}{Math.round(data.weight)} kilos</div>
+                <div className="divTableCell">{" "}{Math.round(data.weight /10)} kilos</div>
             </div>
             <div className="divTableRow">
                 <div className="divTableCell">Nombre de bataille</div>
