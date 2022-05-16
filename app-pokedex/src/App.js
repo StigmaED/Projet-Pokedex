@@ -1,23 +1,49 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import './App.css';
 
-function App() {
+const App = () => 
+{
+  const [pokemon, setPokemon] = useState("pikachu");
+  const [pokemonData, setPokemonData] = useState([]);
+  const [pokemonType, setPokemonType] = useState("");
+
+  const getPokemon = async () => 
+  {
+    const toArray = [];
+    try
+    {
+      const url = "https://pokeapi.co/api/v2/pokemon/${pokemon}"
+      const res = await axios.get(url)
+      console.log(res)
+    } 
+    catch (e) 
+    {
+      console.log(e)
+    }
+  }
+
+  const handleChange = (e) => 
+  {
+    setPokemon(e.target.value.toLowerCase())
+  };
+
+  const handleSubmit = (e) => 
+  {
+    e.preventDefault();
+    getPokemon();
+  }
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <input type="text" onChange={handleChange} placeholder="Enter Pokemon Name"></input>
+        </label>
+      </form>
+
     </div>
   );
 }
