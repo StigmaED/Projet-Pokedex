@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import './App.css';
 
@@ -8,8 +8,11 @@ const App = () =>
 {
   const [pokemon, setPokemon] = useState("pikachu");
   const [pokemonData, setPokemonData] = useState([]);
-  const [pokemonType, setPokemonType] = useState("");
-  
+  const [pokemonType1, setPokemonType1] = useState("");
+ // const [pokemonType2, setPokemonType2] = useState("");
+
+
+
   const getPokemon = async () => 
   {
     const toArray = [];
@@ -18,7 +21,8 @@ const App = () =>
       const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}` //Connexion à L'Api 
       const res = await axios.get(url)
       toArray.push(res.data);
-      setPokemonType(res.data.types[0].type.name)
+      setPokemonType1(res.data.types[0].type.name)
+    //  setPokemonType2(res.data.types[1].type.name)
       setPokemonData(toArray);
       console.log(res)
     } 
@@ -61,19 +65,19 @@ const App = () =>
               <div className="divTable"> {/* La class pour les informations du pokémon récupéré de L'Api */}
                 <div className="divTableBody"></div>
                 <div className="divTableRow">
-                  <div className="divTableCell">Type</div>
-                  <div className="divTableCell">{pokemonType}</div>
+                  <div className="divTableCell">Type(s)</div>
+                  <div className="divTableCell" >  {pokemonType1} {/* X  {pokemonType2}*/}</div> {/* Affichage des 2 Types d'un pokemon */}
               </div>
               <div className="divTableRow">
                 <div className="divTableCell">Taille</div>
-                <div className="divTableCell">{" "}{Math.round(data.height * 10)} centimètres </div>
+                <div className="divTableCell">{" "}{Math.round(data.height * 10)} centimètres </div> {/* Affichage de la taille en centimètres d'un pokemon */}
               </div>
               <div className="divTableRow">
                 <div className="divTableCell">Poids</div>
-                <div className="divTableCell">{" "}{Math.round(data.weight /10)} kilos</div>
+                <div className="divTableCell">{" "}{Math.round(data.weight /10)} kilos</div> {/* Affichage du poids en kilos d'un pokemon */}
               </div>
               <div className="divTableRow">
-                <div className="divTableCell">Nombre de bataille</div>
+                <div className="divTableCell">Nombre de bataille</div> {/* Affichage du du nombres de bataille d'un pokemon */}
                 <div className="divTableCell">{data.game_indices.length}</div>
               </div>
             </div>
