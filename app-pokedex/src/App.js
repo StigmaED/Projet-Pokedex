@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import './App.css';
 
+
+
 const App = () => 
 {
   const [pokemon, setPokemon] = useState("pikachu");
   const [pokemonData, setPokemonData] = useState([]);
   const [pokemonType, setPokemonType] = useState("");
-
+  
   const getPokemon = async () => 
   {
     const toArray = [];
@@ -37,7 +39,7 @@ const App = () =>
     getPokemon();
   }
 
-
+  
 
   return (
     <div className="App">
@@ -51,6 +53,9 @@ const App = () =>
         return (
           <div className="container">
             <img src= {data.sprites["front_default"]}/>
+            <img src= {data.sprites["front_shiny"]}/>
+            <img src= {data.sprites["back_default"]}/>
+            <img src= {data.sprites["back_shiny"]}/>
             <div className="divTable">
               <div className="divTableBody"></div>
               <div className="divTableRow">
